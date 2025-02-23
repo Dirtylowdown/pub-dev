@@ -1,40 +1,106 @@
-// Copyright (c) 2024, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
+End
+Delete
+Void
+Close
+Stop
 
-import 'dart:convert';
-import 'dart:io';
 
-Future<void> main(List<String> args) async {
-  final siteRoot = 'http://localhost:8080';
-  final pages = [
-    '/',
-    '/help',
-    '/packages',
-    '/packages/retry',
-    '/packages/retry/versions',
-    '/packages/retry/score',
-    '/documentation/retry/latest/retry/retry-library.html',
-  ];
-  final padRight = pages.map((p) => p.length).reduce((a, b) => a > b ? a : b);
-  final total = <int>[];
-  for (final isDesktop in [false, true]) {
-    final section = isDesktop ? 'desktop:' : 'mobile:';
-    print('${section.padRight(padRight)}  light/dark accessibility');
-    print('');
-    for (final page in pages) {
-      final url = '$siteRoot$page';
-      final light = await _runLighthouse(
-        url,
-        isDesktop: isDesktop,
-        forceDarkMode: false,
-      );
 
-      final dark = await _runLighthouse(
-        url,
-        isDesktop: isDesktop,
-        forceDarkMode: true,
-      );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       print(
           '${page.padRight(padRight)} ${light.accessibility.toString().padLeft(3)}/${dark.accessibility.toString().padLeft(3)}');
       total.add(light.accessibility);
